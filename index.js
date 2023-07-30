@@ -7,11 +7,12 @@ require('./db/mongoose')
 
 const signup = require('./db/schemas/signUpSchema');
 const ProductSchema = require('./db/schemas/addProject');
+const loginSchema = require('./db/loginSchema')
 
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT =  process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 
 
 const jwt = require('jsonwebtoken');
@@ -23,7 +24,7 @@ app.use(express.json());
 
 
 // insert ContectData
-
+ 
 app.post('/insert', async (req, res) => {
     const data = new contact(req.body);
     let ans = await data.save();
@@ -31,6 +32,13 @@ app.post('/insert', async (req, res) => {
 
 })
 
+// login in  
+
+app.post('/login', async (req, res) => {
+    let data = new loginSchema(req.body);
+    let ans = await data.save();
+    res.send(ans);
+})
 
 // signup
 
@@ -52,7 +60,6 @@ app.post('/signup', async (req, res) => {
     }
 
 })
-
 
 // login 
 
@@ -128,7 +135,7 @@ function verifyToken(req, res, next) {
     }
 }
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server runing at port no ${PORT}`);
 });
 
