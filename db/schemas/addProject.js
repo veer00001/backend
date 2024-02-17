@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+import   mongoose from "mongoose";
+
 
 let ProductSchema = new mongoose.Schema({
     imgUrl: {

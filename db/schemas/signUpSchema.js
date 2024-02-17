@@ -1,5 +1,9 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
+// const validator = require('validator');
+import validator from 'validator';
+
 const signup = new mongoose.Schema({
     name: {
         type: String,
@@ -27,7 +31,7 @@ const signup = new mongoose.Schema({
     },
     password: {
         type: String,
-        require: true,  
+        require: true,
         trime: true
     },
     datecreated: Date,
